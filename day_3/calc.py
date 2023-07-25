@@ -13,3 +13,4 @@ def calc():
     else:
         exit()
     return print(f"O resultado é:{result}")
+print('##############')
