@@ -1,7 +1,27 @@
-from web_scraping_jobs import scraping, key
-from save import save_csv
+from scraping import get_jobs
+from flask import Flask, render_template, request, redirect
 
-result = key('python')
+app = Flask("maratonaScraping")
 
-save_csv(result)
+@app.route('/')
+def hello_world():
+  return render_template('search.html')
+
+@app.route('/search.html')
+def welcome():
+ return render_template('search.html')
+
+@app.route('/result')
+def result():
+  keyword = request.args.get('keyword')
+  keyword = keyword.lower()
+  if keyword:
+    search_result = get_jobs(keyword)
+  else:
+    return redirect('/')
+  return render_template('result.html', jobs=search_result)
+
+app.run(host='0.0.0.0')
+
+
 

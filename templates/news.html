@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Maratona News</title>
+  <!-- AQUI IMPORTO UM ESTILO CSS PRONTO PARA VOCÊ -->
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+
+  <header>
+    <h1>Maratona News</h1>
+    <div>
+      <h3>Paginas</h3>
+      {% if order_by == "news"%}
+      <a href="/?order_by=popular">Popular</a> |
+      <a href="/?order_by=news"><b>News</b></a>
+      {% else %}
+      <a href="/?order_by=popular"><b>Popular</b></a>|
+      <a href="/?order_by=news">News</a>
+      {% endif %}
+    </div>
+  
+</header>
+
+  <main>
+    <!-- #### -->
+    <!-- BLOCO DE CODIGO EXEMPLO DE 1 MATÉRIA -->
+    {% for result in results %}
+       <div>
+        <div>
+          <a href="/{{ result.objectID }}">
+            <h3>{{result.title}} - </h3>
+          </a>
+          <a href="{{result.url}}" target="_blank">{{result.url}}</a>
+        </div>
+        <div>
+          Comentarios: {{result.num_comments}} | Pontos: {{result.points}} | Autor: {{result.author}}
+        </div>
+      </div>
+      <hr />
+    {% endfor %}
+  </main>
+</body>
+</html>

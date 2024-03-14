@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Maratona News</title>
+  <!-- AQUI IMPORTO UM ESTILO CSS PRONTO PARA VOCÊ -->
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+ 
+<header>
+
+    <h1>{{ results.title }}</h1>
+    <div>
+     Pontos: {{results.points}}  Autor: {{results.author}}<a href="{{results.url}}" target="_blank">{{results.url}}</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- BLOCO DE CODIGO EXEMPLO DE 1 COMENTÁRIO -->
+    {% for coment in results.children %}
+    <div>          
+        <h3>{{coment.author}}</h3>
+        <p>{{coment.text | safe}}</p>
+      </div>
+      <hr />
+    {% endfor %}
+     <!-- ACABA HTML ESTUTURA DE UM COMENTÁRIO -->
+  </main>
+
+</body>
+</html>
